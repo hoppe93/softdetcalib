@@ -20,7 +20,7 @@ def rotateWall(rc, zc, angle=1):
     radAngle = angle * np.pi / 180
     nrc = rc * np.cos(radAngle)
     nyc =-rc * np.sin(radAngle) #here
-    nzc =-zc
+    nzc = zc
 
     return nrc, nyc, nzc
 
@@ -35,9 +35,9 @@ def transformWall(rc, yc, zc, cameraPosition, cameraDirection):
     vmat2 = np.dot(vmat, vmat) * 1 / (1+c)
     R = np.add(R, vmat2)
 
-    nrc = np.add(rc, cameraPosition[0])
-    nyc = np.add(yc, cameraPosition[1])
-    nzc = np.add(zc, cameraPosition[2])
+    nrc = np.subtract(rc, cameraPosition[0])
+    nyc = np.subtract(yc, cameraPosition[1])
+    nzc = np.subtract(zc, cameraPosition[2])
 
     wallVector = np.dot(R, [nrc,nyc,nzc])
 

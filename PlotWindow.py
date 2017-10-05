@@ -49,9 +49,10 @@ class PlotWindow(QtWidgets.QFrame):
         pixelscale = 1
 
         if self.wall is not None:
-            distance = np.abs(np.dot(self.detpos, self.detdir))
-            L = np.sqrt(2) * distance * np.tan(self.visang / 2)
-            pixelscale = L / 2
+            #distance = np.abs(np.dot(self.detpos, self.detdir))
+            #L = np.sqrt(2) * distance * np.tan(self.visang / 2)
+            #pixelscale = L / 2
+            pixelscale = np.tan(self.visang / 2) / 2
             
         if self.image is not None:
             h = self.image.shape[0]
